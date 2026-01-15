@@ -15,10 +15,19 @@ def mask_account_card(card_data: str) -> str:
         return text + mask_bill_num
 
     else:
+        text: str = ''
+        card_number: str = ''
+        for symbol in card_data:
+            if symbol.isalpha() or symbol == " ":
+                text += symbol
+            else:
+                card_number += symbol
+        mask_card_num = get_mask_card_number(card_number)
+        return text + mask_card_num
 
-        print("No")
-    return "Opa"
+
+
 
 if __name__ == "__main__":
     print(mask_account_card("Счет 1234567898765432"))
-    mask_account_card("Visa 4567898765432")
+    print(mask_account_card("Visa Master 4567898765432"))
