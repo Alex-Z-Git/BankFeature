@@ -24,8 +24,6 @@ def sort_by_date(list_dictions: Iterable, direction: bool = True) -> Iterable:
     return new_sorted_list
 
 
-
-
 if __name__ == "__main__":
 
 
