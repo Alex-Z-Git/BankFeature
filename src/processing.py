@@ -13,6 +13,7 @@ def filter_by_state(list_dict: Iterable, state='EXECUTED')-> Iterable:
 
 
 
+
 def sort_by_date(list_dictions: Iterable, direction: bool = True) -> Iterable:
     """Функция сортирующая список словарей по значению "date" и возвращающая новый отсортированный список"""
     """Направление сортировки задается параметром 'direction' True (по умолчанию) - убывание, False - возрастание """
