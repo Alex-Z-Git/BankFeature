@@ -1,11 +1,11 @@
 from typing import Iterable
 
-def filter_by_state(list_dict: Iterable, state='EXECUTED')-> Iterable:
-
+def filter_by_state(list_dict: Iterable, state_value: str ='EXECUTED')-> Iterable:
+    """Функция сортирующая список по значению state ('EXECUTED' по умолчанию) """
     filtered_list = []
     for i in list_dict:
         for key, value in i.items():
-            if value == state:
+            if key == 'state' and value == state_value:
                 filtered_list.append(i)
 
 
@@ -34,5 +34,11 @@ if __name__ == "__main__":
                 {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
                 ]
 
-    print(sort_by_date(our_list))
-    print(filter_by_state(our_list))
+    #print(sort_by_date(our_list))
+    date_list = sort_by_date(our_list)
+
+    for i in date_list:
+        print(i)
+
+    print()
+    print(filter_by_state(our_list, 'CANCELED'))
