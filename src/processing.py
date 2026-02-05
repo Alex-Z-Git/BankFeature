@@ -8,10 +8,7 @@ def filter_by_state(list_dict: Iterable, state_value: str ='EXECUTED')-> Iterabl
             if key == 'state' and value == state_value:
                 filtered_list.append(i)
 
-
     return filtered_list
-
-
 
 
 def sort_by_date(list_dictions: Iterable, direction: bool = True) -> Iterable:
@@ -20,12 +17,10 @@ def sort_by_date(list_dictions: Iterable, direction: bool = True) -> Iterable:
 
     new_sorted_list = sorted(list_dictions, key = lambda x: x['date'], reverse = direction)
 
-
     return new_sorted_list
 
 
 if __name__ == "__main__":
-
 
     our_list = [
                 {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
@@ -37,8 +32,17 @@ if __name__ == "__main__":
     #print(sort_by_date(our_list))
     date_list = sort_by_date(our_list)
 
-    for i in date_list:
+    for i in date_list:  # Выводин лист построчно для удобства проверки
         print(i)
 
     print()
-    print(filter_by_state(our_list, 'CANCELED'))
+
+    date_list = sort_by_date(our_list, False) # Меняем направление сортировки.
+
+    for i in date_list: # Выводин лист построчно для удобства проверки
+        print(i)
+
+    print()  # Печатаем пустую строку для форматирования вывода
+    print(filter_by_state(our_list, 'CANCELED'))   # выводим отфильтрованный список
+    print() # Печатаем пустую строку для форматирования вывода
+    print(filter_by_state(our_list, 'EXECUTED'))  # Меняем параметр фильтрования
