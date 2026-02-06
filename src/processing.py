@@ -33,14 +33,14 @@ if __name__ == "__main__":
     # print(sort_by_date(our_list))
     date_list = sort_by_date(our_list)
 
-    for i in date_list:  # Выводин лист построчно для удобства проверки
+    for i in date_list:  # Выводим лист построчно для удобства проверки
         print(i)
 
     print()
 
     date_list = sort_by_date(our_list, False)  # Меняем направление сортировки.
 
-    for i in date_list:  # Выводин лист построчно для удобства проверки
+    for i in date_list:  # Выводим лист построчно для удобства проверки
         print(i)
 
     print()  # Печатаем пустую строку для форматирования вывода
