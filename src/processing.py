@@ -4,19 +4,19 @@ from typing import Iterable
 def filter_by_state(list_dict: Iterable, state_value: str = "EXECUTED") -> Iterable:
     """Функция сортирующая список по значению state ('EXECUTED' по умолчанию)"""
     filtered_list = []
-    for i in list_dict:
-        for key, value in i.items():
+    for itm in list_dict:
+        for key, value in itm.items():
             if key == "state" and value == state_value:
-                filtered_list.append(i)
+                filtered_list.append(itm)
 
     return filtered_list
 
 
-def sort_by_date(list_dictions: Iterable, direction: bool = True) -> Iterable:
+def sort_by_date(list_dictionary: Iterable, direction: bool = True) -> Iterable:
     """Функция сортирующая список словарей по значению "date" и возвращающая новый отсортированный список
     Направление сортировки задается параметром 'direction' True (по умолчанию) - убывание, False - возрастание"""
 
-    new_sorted_list = sorted(list_dictions, key=lambda x: x["date"], reverse=direction)
+    new_sorted_list = sorted(list_dictionary, key=lambda x: x["date"], reverse=direction)
 
     return new_sorted_list
 

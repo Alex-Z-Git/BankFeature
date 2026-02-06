@@ -1,7 +1,6 @@
 import re
 
-from src.masks import get_mask_account
-from src.masks import get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_data: str) -> str:
@@ -33,7 +32,7 @@ def get_date(some_date: str) -> str:
     match_date = re.search(r"(\d{4})-(\d{2})-(\d{2})", some_date)
     if match_date:
         #  formatted_date = re.sub(r"(\d{4})-(\d{2})-(\d{2})", r"\3.\2.\1", some_date)
-        return (f"{match_date.group(3)}.{match_date.group(2)}.{match_date.group(1)}")
+        return f"{match_date.group(3)}.{match_date.group(2)}.{match_date.group(1)}"
     else:
         return "Введены некорректные параметры времени (ожидается 'YYYY-MM-DD')"
 #    print(formatted_date)  # 11.03.2024
