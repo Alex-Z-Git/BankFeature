@@ -17,6 +17,17 @@ def test_mask_account_card_basic(our_card_data, excepted_card_data):
     assert mask_account_card(our_card_data) == excepted_card_data
 
 
+@pytest.mark.parametrize("wrong_type", [("2024/03/11T02:26:18.671407", 13),
+                                        20240520,
+                                        {"a": 24, "b": 12 }
+                                        ])
+
+
+def test_mask_account_wrong_type(wrong_type):
+    with pytest.raises(TypeError):
+        mask_account_card(wrong_type)
+
+
 @pytest.mark.parametrize("our_time_data, excepted_our_time_data", [("2024-03-11T02:26:18.671407", "11.03.2024"),
                                                                    ("2024-05-20T12:01:36.671407", "20.05.2024"),
                                                                    ("2025-01-05T14:52:40.671407", "05.01.2025")

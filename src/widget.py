@@ -5,28 +5,30 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(card_data: str) -> str:
     """Функция выдающая замаскированную карту"""
-    if "Счет" in card_data:
-        bill_text: str = ''
-        bill_number: str = ''
-        for symbol in card_data:
-            if symbol.isalpha() or symbol == " ":
-                bill_text += symbol
-            else:
-                bill_number += symbol
-        mask_bill_num = get_mask_account(bill_number)
-        return bill_text + mask_bill_num
+    if isinstance(card_data, str):
+        if "Счет" in card_data:
+            bill_text: str = ''
+            bill_number: str = ''
+            for symbol in card_data:
+                if symbol.isalpha() or symbol == " ":
+                    bill_text += symbol
+                else:
+                    bill_number += symbol
+            mask_bill_num = get_mask_account(bill_number)
+            return bill_text + mask_bill_num
 
+        else:
+            card_text: str = ''
+            card_number: str = ''
+            for symbol in card_data:
+                if symbol.isalpha() or symbol == " ":
+                    card_text += symbol
+                else:
+                    card_number += symbol
+            mask_card_num = get_mask_card_number(card_number)
+            return card_text + mask_card_num
     else:
-        card_text: str = ''
-        card_number: str = ''
-        for symbol in card_data:
-            if symbol.isalpha() or symbol == " ":
-                card_text += symbol
-            else:
-                card_number += symbol
-        mask_card_num = get_mask_card_number(card_number)
-        return card_text + mask_card_num
-
+        raise TypeError("Ошибка. Неверный тип данных. Ожидается строка.")
 
 def get_date(some_date: str) -> str:
     """Функция принимающая дату в формате YYYY-MM-DD и возвращающая в формате DD.MM.YYYY"""
