@@ -35,9 +35,9 @@ def get_mask_account(bill: Union[int, str]) -> str:
     return mask_bill
 
 
-if __name__ == "__main__":
-    print(get_mask_card_number(1234567898765432))
-    print(get_mask_card_number("1234 5678 9876 5432"))
-
-    print(get_mask_account(73654108430135874305))
-    print(get_mask_account("12345678998765432100"))
+# if __name__ == "__main__":
+#     print(get_mask_card_number(1234567898765432))
+#     print(get_mask_card_number("1234 5678 9876 5432"))
+#
+#     print(get_mask_account(73654108430135874305))
+#     print(get_mask_account("12345678998765432100"))
