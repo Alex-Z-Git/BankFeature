@@ -29,13 +29,16 @@ def mask_account_card(card_data: str) -> str:
 
 
 def get_date(some_date: str) -> str:
-    match_date = re.search(r"(\d{4})-(\d{2})-(\d{2})", some_date)
-    if match_date:
-        #  formatted_date = re.sub(r"(\d{4})-(\d{2})-(\d{2})", r"\3.\2.\1", some_date)
-        return f"{match_date.group(3)}.{match_date.group(2)}.{match_date.group(1)}"
+    """Функция принимающая дату в формате YYYY-MM-DD и возвращающая в формате DD.MM.YYYY"""
+    if isinstance(some_date, str):
+        match_date = re.search(r"(\d{4})-(\d{2})-(\d{2})", some_date)
+        if match_date:
+            #  formatted_date = re.sub(r"(\d{4})-(\d{2})-(\d{2})", r"\3.\2.\1", some_date)
+            return f"{match_date.group(3)}.{match_date.group(2)}.{match_date.group(1)}"
+        else:
+            return "Введены некорректные параметры времени (ожидается 'YYYY-MM-DD')"
     else:
-        return "Введены некорректные параметры времени (ожидается 'YYYY-MM-DD')"
-#    print(formatted_date)  # 11.03.2024
+        raise TypeError("Ошибка. Неверный тип данных. Ожидается строка с датой")
 
 
 if __name__ == "__main__":
