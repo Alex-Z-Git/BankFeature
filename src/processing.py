@@ -3,7 +3,7 @@ from typing import Iterable
 
 def filter_by_state(list_dict: Iterable, state_value: str = "EXECUTED") -> Iterable:
     """Функция сортирующая список по значению state ('EXECUTED' по умолчанию)"""
-    if isinstance(list_dict,list):
+    if isinstance(list_dict, list):
         if list_dict == []:
             raise ValueError("Ошибка. Передан пустой список")
 
@@ -16,7 +16,8 @@ def filter_by_state(list_dict: Iterable, state_value: str = "EXECUTED") -> Itera
     else:
         raise TypeError("Неверные данные для сортировки (ожидается список словарей)")
     if filtered_list == []:
-        raise ValueError("Ошибка. В переданном списке словарей отсутствует ключ 'state' либо его значение передано неверно")
+        raise ValueError("Ошибка. В переданном списке словарей отсутствует ключ 'state' "
+                         "либо его значение передано неверно")
     return filtered_list
 
 
@@ -28,8 +29,10 @@ def sort_by_date(list_dictionary: Iterable, direction: bool = True) -> Iterable:
             raise ValueError("Ошибка. Передан пустой список")
         if not isinstance(direction, bool):
             raise TypeError("Ошибка. Укажите направление сортировки 'True' or 'False' или не передавайте его")
-        try: new_sorted_list = sorted(list_dictionary, key=lambda x: x["date"], reverse=direction)
-        except KeyError: raise ValueError("Ошибка. В переданном списке нет словарей с ключом 'date' ")
+        try:
+            new_sorted_list = sorted(list_dictionary, key=lambda x: x["date"], reverse=direction)
+        except KeyError:
+            raise ValueError("Ошибка. В переданном списке нет словарей с ключом 'date' ")
     else:
         raise TypeError("Неверные данные для сортировки (ожидается список словарей)")
     return new_sorted_list
@@ -37,7 +40,8 @@ def sort_by_date(list_dictionary: Iterable, direction: bool = True) -> Iterable:
 
 # if __name__ == "__main__":
 #
-#try: number = int(input("Введите число: ")) print(f"Вы ввели: {number}") except ValueError: print("Ошибка: нужно ввести число!")
+# try: number = int(input("Введите число: ")) print(f"Вы ввели: {number}")
+# except ValueError: print("Ошибка: нужно ввести число!")
 #     our_list = [
 #         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
 #         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -78,4 +82,3 @@ def sort_by_date(list_dictionary: Iterable, direction: bool = True) -> Iterable:
     #     {"id": 939719570, "date": "2018-06-30T02:08:58.425572"},
     #     {"id": 594226727, "date": "2018-09-12T21:27:25.241689"},
     #     {"id": 615064591, "date": "2018-10-14T08:21:33.419441"}], "EXECUTED"))  # Меняем параметр фильтрования
-

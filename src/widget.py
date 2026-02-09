@@ -30,6 +30,7 @@ def mask_account_card(card_data: str) -> str:
     else:
         raise TypeError("Ошибка. Неверный тип данных. Ожидается строка.")
 
+
 def get_date(some_date: str) -> str:
     """Функция принимающая дату в формате YYYY-MM-DD и возвращающая в формате DD.MM.YYYY"""
     if isinstance(some_date, str):

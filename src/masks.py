@@ -1,18 +1,16 @@
 from typing import Union
 
 
-
-
 def get_mask_card_number(number: Union[int, str]) -> str:
     """Функция, которая принимает номер карты в виде числа или строки
      и возвращает замаскированный номер карты вида '7000 79** **** 6361' """
 
     temp_number = str(number)
-    formated_temp_number = temp_number.replace(" ", "")
+    formated_number = temp_number.replace(" ", "")
 
-    if formated_temp_number.isdigit() and len(formated_temp_number) == 16:
+    if formated_number.isdigit() and len(formated_number) == 16:
 
-        mask_number = formated_temp_number[:4] + " " + formated_temp_number[4:6] + "**" + " **** " + formated_temp_number[-4:]
+        mask_number = formated_number[:4] + " " + formated_number[4:6] + "** **** " + formated_number[-4:]
 
     else:
         raise ValueError("Неверный формат данных")
