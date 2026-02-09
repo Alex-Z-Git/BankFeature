@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+poetry = "^2.3.2"
 
 
 [tool.poetry.group.lint.dependencies]
@@ -26,7 +27,7 @@ warn_return_any = true
 exclude = 'venv'
 
 [tool.black]
-# максимальная длинна строки
+# максимальная длина строки
 line-length = 119
 # файлы которые не нужно форматировать
 exclude = '''
