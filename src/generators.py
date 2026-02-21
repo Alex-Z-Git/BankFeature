@@ -2,7 +2,7 @@ from typing import Any, Iterable
 
 
 def filter_by_currency(transactions_list: Iterable, money: str) -> Iterable :
-
+    """Функция фильтрующая список транзакций по названию валюты в ключе 'code' """
     # result = []
     # for value in transactions:
     #     if money == value.get("operationAmount", {}).get("currency", {}).get("code", "Not Found"):
@@ -24,6 +24,7 @@ def filter_by_currency(transactions_list: Iterable, money: str) -> Iterable :
 
 
 def transaction_descriptions(trans_list: Iterable) -> Any:
+    """Функция-генератор возвращающая описание транзакции из ключа 'description' """
     result = [x for x in trans_list for key, value in x.items() if key == "description"]
 
     if result:
@@ -41,6 +42,8 @@ def transaction_descriptions(trans_list: Iterable) -> Any:
 
 
 def card_number_generator(start_num: int, end_num: int) -> Any:
+    """Функция-генератор для создания номеров карт в заданном диапазоне
+    возвращает номера карт в формате '0000 0000 0000 1234' """
     start_x = int(start_num)
     end_x = int(end_num)
     if end_x < start_x:
