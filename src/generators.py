@@ -44,18 +44,22 @@ def card_number_generator(start_num: int, end_num: int) -> Any:
     start_x = int(start_num)
     end_x = int(end_num)
     if end_x < start_x:
-        return print("Ошибка. Конечное число меньше начального")
+        while True:
+            yield "Ошибка. Конечное число меньше начального"
     elif start_x < 0 or end_x < 0:
-        return print("Ошибка. Значения должны быть положительными")
+        while True:
+            yield "Ошибка. Значения должны быть положительными"
     elif start_x > 9999999999999999 or end_x > 9999999999999999:
-        return print("Ошибка. Значения не могут быть больше 9'999'999'999'999'999")
+        while True:
+            yield "Ошибка. Значения не могут быть больше 9'999'999'999'999'999"
     else:
         num = start_x
         for i in range(start_x, end_x + 1):
             num_str = f'{num:016d}'
             yield (' '.join([num_str[i:i + 4] for i in range(0, 16, 4)]))
             num += 1
-
+        while True:
+            yield "Все карты заданного диапазона сгенерированы"
 
 # if __name__ == "__main__":
 #     for card_number in card_number_generator(9, 99999999999999999):

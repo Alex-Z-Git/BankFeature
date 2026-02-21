@@ -223,3 +223,45 @@ def test_transaction_descriptions_part(transaction_list, transaction_description
     assert next(generator) == transaction_description_list[0]
     assert next(generator) == transaction_description_list[1]
     assert next(generator) == transaction_description_list[2]
+
+
+@pytest.fixture
+def card_number_list_1_5():
+    return ["0000 0000 0000 0001", "0000 0000 0000 0002",
+            "0000 0000 0000 0003", "0000 0000 0000 0004",
+            "0000 0000 0000 0005"
+            ]
+
+def test_card_number_generator_normal(card_number_list_1_5):
+    generator = card_number_generator(1,5)
+    assert next(generator) == card_number_list_1_5[0]
+    assert next(generator) == card_number_list_1_5[1]
+    assert next(generator) == card_number_list_1_5[2]
+    assert next(generator) == card_number_list_1_5[3]
+    assert next(generator) == card_number_list_1_5[4]
+    assert next(generator) == "Все карты заданного диапазона сгенерированы"
+
+
+def test_card_number_generator_max():
+    generator = card_number_generator(9999999999999999,9999999999999999)
+    assert next(generator) == "9999 9999 9999 9999"
+
+
+def test_card_number_generator_one(card_number_list_1_5):
+    generator = card_number_generator(1,1)
+    assert next(generator) == card_number_list_1_5[0]
+
+
+def test_card_number_generator_over():
+    generator = card_number_generator(9999999999999999,10000000000000009)
+    assert next(generator) == "Ошибка. Значения не могут быть больше 9'999'999'999'999'999"
+
+
+def test_card_number_generator_start_lower_end():
+    generator = card_number_generator(9999999999999999,1000000000000009)
+    assert next(generator) == "Ошибка. Конечное число меньше начального"
+
+
+def test_card_number_generator_lower():
+    generator = card_number_generator(-2,109)
+    assert next(generator) == "Ошибка. Значения должны быть положительными"
