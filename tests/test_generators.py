@@ -193,3 +193,33 @@ def test_filter_by_currency_zero():
     generator = filter_by_currency([],"USD")
     assert next(generator) == "Выбранная валюта в списке отсутствует или список пуст"
     assert next(generator) == "Выбранная валюта в списке отсутствует или список пуст"
+
+
+@pytest.fixture
+def transaction_description_list():
+    return ["Перевод организации", "Перевод со счета на счет",
+            "Перевод со счета на счет", "Перевод с карты на карту",
+            "Перевод организации"
+            ]
+
+
+def test_transaction_descriptions_normal(transaction_list, transaction_description_list):
+    generator = transaction_descriptions(transaction_list)
+    assert next(generator) == transaction_description_list[0]
+    assert next(generator) == transaction_description_list[1]
+    assert next(generator) == transaction_description_list[2]
+    assert next(generator) == transaction_description_list[3]
+    assert next(generator) == transaction_description_list[4]
+    assert next(generator) == "Список транзакций исчерпан"
+
+
+def test_transaction_descriptions_zero():
+    generator = transaction_descriptions([])
+    assert next(generator) == "В списке нет описания транзакции. (Отсутствует ключ 'description') "
+
+
+def test_transaction_descriptions_part(transaction_list, transaction_description_list):
+    generator = transaction_descriptions(transaction_list)
+    assert next(generator) == transaction_description_list[0]
+    assert next(generator) == transaction_description_list[1]
+    assert next(generator) == transaction_description_list[2]
