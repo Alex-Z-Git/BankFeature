@@ -182,3 +182,14 @@ def test_filter_by_currency_usd(transaction_list, excepted_usd_list):
     assert next(generator) == excepted_usd_list[2]
     assert next(generator) == "Конец списка"
 
+
+def test_filter_by_currency_no_rub(excepted_usd_list):
+    generator = filter_by_currency(excepted_usd_list,"RUB")
+    assert next(generator) == "Выбранная валюта в списке отсутствует или список пуст"
+    assert next(generator) == "Выбранная валюта в списке отсутствует или список пуст"
+
+
+def test_filter_by_currency_zero():
+    generator = filter_by_currency([],"USD")
+    assert next(generator) == "Выбранная валюта в списке отсутствует или список пуст"
+    assert next(generator) == "Выбранная валюта в списке отсутствует или список пуст"

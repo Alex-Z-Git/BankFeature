@@ -15,6 +15,9 @@ def filter_by_currency(transactions_list: Iterable, money: str) -> Iterable :
     if result:
         for item in result:
             yield item
+    else:
+        while True:
+            yield "Выбранная валюта в списке отсутствует или список пуст"
 
     while True:
         yield "Конец списка"
